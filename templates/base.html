@@ -80,7 +80,7 @@
             <p>Добро пожаловать, {{request.user.username}} | </p><a href="{% url 'newes:logout' %}">Выйти</a>
             {% else %}
 
-            <a href="{% url 'newes:login' %}">Войти</a>|<a href="{% url 'newes:register' %}">Зарегистрироваться</a>
+            <a href="{% url 'newes:login' %}">Вход</a>|<a href="{% url 'newes:register' %}">Регистрация</a>
 
             {% endif %}
                             </span>
