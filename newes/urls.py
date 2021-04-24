@@ -9,6 +9,7 @@ urlpatterns = [
     path('<int:news_id>/comment/', comment, name='comment'),
     path('<int:news_id>/like/', like, name='like'),
     path('search/', Search,name='search_results'),
+    path('filter/', filter_result,name='filter_results'),
     path('login/',user_login,name='login'),
     path('logout/',user_logout,name='logout'),
     path('register/',register,name='register'),

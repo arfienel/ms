@@ -17,12 +17,13 @@ def Parse(URL):
         if items == []:
             items = soup.find_all('div', class_='metascore_w xlarge game negative')
         items = str(items)
-        items = items.replace(items[0:items.find('span')+5],'').replace(items[items.find('</'):],'')
+        items = items.replace(items[0:items.find('span')+28],'').replace(items[items.find('</'):],'')
 
-        return int(items)
+        return items
 
     else:
         print('Error')
         return False
+
 
 

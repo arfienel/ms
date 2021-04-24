@@ -12,6 +12,8 @@
 
     body {
     color:white;
+      display: grid;
+  grid-template-rows: 1fr auto;
     background: #1A1A1D;
     height: 100%;
     }
@@ -69,7 +71,7 @@
 </head>
 
 <body>
-<header>
+<header style="width:100%">
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
           <a href="{% url 'newes:main_page' %}" class="navbar-brand d-flex align-items-center">
@@ -101,9 +103,9 @@
     {% endblock %}
 
 
-    <footer class="bg-dark text-center text-white">
+    <footer class="bg-dark text-center text-white" style="width:100%;margin-top:20px">
   <!-- Grid container -->
-  <div class="container p-4 pb-0">
+  <div class="container p-4 pb-0" >
     <!-- Section: Social media -->
     <section class="mb-4">
       <!-- Facebook -->

@@ -65,8 +65,6 @@ class News(models.Model):
 
 
 
-#
-
 
 class Comment(models.Model):
     com_news = models.ForeignKey(News, on_delete=models.CASCADE)

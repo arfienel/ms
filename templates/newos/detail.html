@@ -15,11 +15,11 @@
     {% endif %}
     <!-- оценка с метакритики -->
     {% if metascore > 70 %}
-        <span class="bg-success fs-4 fw-bold " style="margin-top:215px;margin-right:-216px;float:right;padding:60px 49.5px 60px 49px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
+        <span class="bg-success fs-4 fw-bold " style="float:right;padding:60px 49.5px 60px 49px;margin:215px -215px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
     {% elif metascore < 35 %}
-        <span class="bg-danger fs-4 fw-bold " style="float:right;padding:60px 49.5px 60px 49px;margin-top:-78px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
+        <span class="bg-danger fs-4 fw-bold " style="float:right;padding:60px 49.5px 60px 49px;margin:215px -215px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
     {% else %}
-        <span class="bg-warning fs-4 fw-bold " style="float:right;padding:60px 49.5px 60px 49px;margin-top:-78px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
+        <span class="bg-warning fs-4 fw-bold " style="float:right;padding:60px 49.5px 60px 49px;margin:215px -215px;text-align:center;">Metascore<br class="fs-1">{{ metascore }}</span>
     {% endif %}
     <!-- цена на стиме -->
     {% if steam_free %}
@@ -77,5 +77,5 @@
             </div></div></div>
 </section>
 </section>
-
+<p>{{ count }}</p>
 {% endblock %}
