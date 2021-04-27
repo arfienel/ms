@@ -4,11 +4,19 @@ from django.utils import timezone
 from django.contrib.auth.models import AbstractUser,User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from multiselectfield import MultiSelectField
+from django.urls import reverse
+
+
+
 
 """ модели для Статей """
 def toFixed(numObj, digits=0):
     return f"{numObj:.{digits}f}"
 
+
+def get_absolute_url(self):
+    from django.core.urlresolvers import reverse
+    return reverse('news.views.detail', args=[str(self.id)])
 
 class News(models.Model):
     class Genres(models.TextChoices):
@@ -48,6 +56,8 @@ class News(models.Model):
     plot = models.PositiveSmallIntegerField('Сюжет', validators=[MinValueValidator(0), MaxValueValidator(10)])
     likes = models.ManyToManyField(User,related_name='Лайки',blank=True)
 
+    def get_absolute_url(self):
+        return reverse('newes:detail',kwargs={'id':self.id})
 
     def total_likes(self):
         return self.likes.count()
@@ -64,6 +74,16 @@ class News(models.Model):
         ordering = ['-pub_date']
 
 
+class PageHit(models.Model):
+    url = models.CharField(unique=True, max_length=2000)
+    count = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = 'счётчик'
+        verbose_name_plural = 'счётчики'
+
+    def __str__(self):
+        return self.url
 
 
 class Comment(models.Model):

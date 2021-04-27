@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['192.168.31.48','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+
     'newes.apps.NewesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'multiselectfield',
-
+    'newes.templatetags'
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
         },
     },
 ]

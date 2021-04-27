@@ -1,4 +1,6 @@
+
 {% extends 'base.html' %}
+{% load counter %}
 {% block title %} Статьи {% endblock %}
 
 {% block content %}
@@ -31,7 +33,8 @@
                 <a class="text-dark" href="{% url 'newes:detail' a.id %}">{{ a.title }}</a>
               </h3>
               <p class="card-text text-dark mb-auto">Жанр: {{ a.genre1 }}<br>
-                Дата выхода {{ a.release_date }}</p>
+                Дата выхода {{ a.release_date }}<br>
+                  Количество просмотров {% page_hits a.id %}</p>
               <a href="{% url 'newes:detail' a.id %}">Continue reading</a>
             </div>
             <a href="{% url 'newes:detail' a.id %}"><img class="card-img-right flex-auto d-none d-lg-block" src="{{a.gm_photo.url}}" width="170" height="180"></a>

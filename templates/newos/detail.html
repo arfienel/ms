@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load counter %}
 {% block title %} {{news.title}} {% endblock %}
 
 {% block content %}
@@ -49,7 +49,8 @@
     <button type="submit" value="{{ news_id }}" class="btn btn-danger">Like</button>
 </form>
     {% endif %}
-    <span class="bg-danger fs-4 fw-bold">Количество лайков - {{ news.total_likes }}</span>
+    <span class="bg-danger fs-4 fw-bold">Количество лайков - {{ news.total_likes }}</span><br>
+    <span class="bg-grey fs-4 fw-bold">Количество просмотров - {% page_hits %}</span>
     <br><br>
 <p>Дата публикации статьи: {{ news.pub_date }}</p>
     {% if user.is_authenticated %}
@@ -77,5 +78,4 @@
             </div></div></div>
 </section>
 </section>
-<p>{{ count }}</p>
 {% endblock %}

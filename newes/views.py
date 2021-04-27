@@ -10,7 +10,8 @@ from .forms import UserRegisterForm, UserLoginForm
 from django.core.paginator import Paginator
 from django.views.generic import ListView, TemplateView
 from django.urls import reverse
-
+from .decorators import counted
+from django.utils.decorators import method_decorator
 
 
 def register(request):
@@ -47,7 +48,6 @@ def user_login(request):
 
 
 
-
 def main_page(request):
     news_list = News.objects.order_by('pub_date')[::-1]
     paginator = Paginator(news_list, 3)
@@ -55,6 +55,7 @@ def main_page(request):
     news_list = paginator.get_page(page)
     generess = ['action','adventure','simulator','strategy','RPG','puzzle']
     return render(request, 'newos/mainp.html', {'news_list': news_list,'genress':generess})
+
 
 def filter_result(request):
     quest = request.GET.get('fil')
@@ -72,6 +73,8 @@ def Search(request):
     return render(request, 'newos/search-results.html', {'result': result,'genress':genress})
 
 
+
+@counted
 def detail(request, news_id):
     try:
         a = News.objects.get(id=news_id)
@@ -99,19 +102,26 @@ def detail(request, news_id):
         steam_discount = steam_price[2]
 
 
+
+
     comment_list = a.comment_set.order_by('-id')
     return render(request, 'newos/detail.html',
                   {'news': a, 'latest_comments_list': latest_comments_list, 'score': float(score),
                    'metascore': metascore, 'steam_discount': steam_discount, 'steam_orig': steam_orig,
                    'steam_free': steam_free,
                    'steam_price_final': steam_price_final, 'youtube': youtube,
-                   'comment_list': comment_list,})
+                   'comment_list': comment_list})
+
+
+
+
 
 def like(request,news_id):
     news = get_object_or_404(News, id=news_id)
     news.likes.add(request.user)
 
     return redirect(reverse('newes:detail', args=[news.id]))
+
 
 def comment(request, news_id):
     try:
