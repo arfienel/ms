@@ -83,6 +83,7 @@ def is_liked(request,news_id):
     else:
         return False
 
+
 class PageHit(models.Model):
     url = models.CharField(unique=True, max_length=2000)
     count = models.PositiveIntegerField(default=0)

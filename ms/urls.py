@@ -20,7 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('rest-auth/',include('rest_framework.urls')),
     path('',include('newes.urls')),
 ]
 
