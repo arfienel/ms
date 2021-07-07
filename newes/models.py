@@ -18,6 +18,7 @@ def get_absolute_url(self):
     from django.core.urlresolvers import reverse
     return reverse('news.views.detail', args=[str(self.id)])
 
+
 class News(models.Model):
     class Genres(models.TextChoices):
         action = ('action', 'action')
