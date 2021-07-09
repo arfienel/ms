@@ -19,8 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-PROJECT_ROOT = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -32,8 +31,7 @@ SECRET_KEY = '&&l7ert(*ykkngst=mw6pg&lj=(qh@+p%!au$j+oyiv1)&@&t5'
 DEBUG = True
 
 
-# '192.168.31.48'
-ALLOWED_HOSTS = ['192.168.31.48','127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -143,3 +141,9 @@ SITE_ID = 1
 
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates/'),)
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *

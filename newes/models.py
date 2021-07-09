@@ -1,7 +1,7 @@
 from django.db import models
 import datetime
 from django.utils import timezone
-from django.contrib.auth.models import AbstractUser,User
+from django.contrib.auth.models import AbstractUser, User
 from django.core.validators import MinValueValidator, MaxValueValidator
 from multiselectfield import MultiSelectField
 from django.urls import reverse
